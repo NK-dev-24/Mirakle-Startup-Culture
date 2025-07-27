@@ -13,6 +13,8 @@ import NotFound from "./pages/NotFound";
 import OpportunityDetails from "./pages/OpportunityDetails";
 import StartupsList from "./pages/StartupsList";
 import Auth from "./pages/Auth";
+import Admin from "./pages/Admin";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +23,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <AuthProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
@@ -32,9 +35,11 @@ const App = () => (
           <Route path="/all-startups" element={<AllStartups />} />
           <Route path="/opportunity-details" element={<OpportunityDetails />} />
           <Route path="/startups" element={<StartupsList />} />
+            <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
